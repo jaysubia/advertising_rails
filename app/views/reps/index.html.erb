@@ -1,0 +1,30 @@
+<div class="jumbotron">
+	<div class="container">
+		<h2>Hello <%=@rep.first_name%> <%=@rep.last_name%>!</h2>
+		<% if @products.count < 2 %>
+			<p>You have <%=@products.count%> product.</p>
+		<%else%>	
+			<p>You have <%=@products.count%> products.</p>
+		<%end %>
+	</div>
+</div>
+<div class="container">
+	<div class="row col-lg-4">
+		<h2>Title</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi ad, repellendus, tempora tenetur esse unde nobis deleniti cupiditate error earum harum ipsum suscipit quas itaque. Totam neque asperiores illum accusantium.
+		</p>
+	</div>
+	<div class="row col-lg-4">
+		<h2>Title</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, odit dolorum repellendus quisquam adipisci! Quos esse pariatur mollitia, ipsa nesciunt aperiam labore at quaerat neque. Officia eius quos cum harum.
+		</p>
+	</div>
+	<div class="row col-lg-4">
+		<h2>Title</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, at voluptas tempora delectus assumenda unde suscipit officia veniam, pariatur mollitia qui maxime, aliquam dicta quisquam sit velit amet exercitationem hic!
+		</p>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+<div class="jumbotron">
+	<div class="container">
+		<h1>Hello <%=@admin.first_name%></h1>
+		<% if @admin.reps.count < 2%>
+			<p>You have <%=@admin.reps.count%> rep.</p>
+		<% else %>
+			<p>You have <%=@admin.reps.count%> reps.</p>
+		<%end%>
+		<!-- <p>Your reps have NUM_OF_REP_USERS</p> -->
+	</div>
+</div>
+<div class="container">
+	<div class="row col-lg-12">
+		<h2 class="admin_title">Reps</h2>
+		<div class="admin_paragraph">
+		  <% if @admin.reps %>
+		    <table class="table table-striped">
+		    	<thead>
+		    		<th>Rep Name</th>
+		    		<th>Rep Email</th>
+		    		<th>Rep Phone</th>
+		    	</thead>
+		    <%@admin.reps.each do |rep|%>
+			  <tr>
+			  	<td><%=rep.first_name%> <%=rep.last_name%></td>
+			  	<td><a href="mailto:<%=rep.email%>"><%=rep.email%></a></td>
+			  	<td><a href="tel:<%=rep.phone%>"><%=rep.phone%></a></td>
+			  </tr>
+		    <%end%>
+		    </table>
+		  <%else%>
+			<p>You do not have any reps.</p>
+		  <%end%>
+		</div>
+	</div>
+	<div class="row col-lg-12">
+		<h2 class="admin_title">Products</h2>
+		<div class="admin_paragraph">
+		  <% if @products %>
+		  <table class="table table-striped">
+			    <thead>
+			    	<th>Street Address</th>
+			    	<th>City</th>
+			    	<th>Rep Name</th>
+			    </thead>
+			<%@products.each do |product| %>
+				<tr>
+					<td><%=product.street_address%></td>
+					<td><%=product.city%></td>
+					<td><%=product.rep.first_name%> <%=product.rep.last_name%></td>
+				</tr>
+			<%end%>		
+		  </table>
+		  <%else%>
+		    <p>You do not have any products.</p>
+		  <%end%>
+		</div>
+	</div>
+</div>
