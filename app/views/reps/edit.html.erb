@@ -1,32 +1,39 @@
 <h1>Edit Rep</h1>
-<form action="" method="post">
-	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-	<input type="hidden" name="_method" value="patch">
-	<input type="text" name="rep[first_name]" placeholder="<%=@rep.first_name%>">
-	<input type="text" name="rep[last_name]" placeholder="<%=@rep.last_name%>">
-	<input type="text" name="rep[email]" placeholder="<%=@rep.email%>">
-	<input type="submit">
-</form>
-<%= form_for @rep, html:{ multipart: true} do |f|%>
-  <% if @rep.errors.any? %>
-    <div id="error_explanation">
-    	<h2><%=pluralize(@rep.errors.count, "error") %> prohibited this rep from being savid:</h2>
-    	<ul>
-    		<% @rep.errors.full_messages.each do |message| %>
-    		  <li><%=message%></li>
-			<%end%>
-    	</ul>
+<div class="container">
+  <%= form_for @rep, html:{ multipart: true} do |f|%>
+    <% if @rep.errors.any? %>
+      <div id="error_explanation">
+        <h2><%=pluralize(@rep.errors.count, "error") %> prohibited this rep from being savid:</h2>
+        <ul>
+          <% @rep.errors.full_messages.each do |message| %>
+            <li><%=message%></li>
+        <%end%>
+        </ul>
+      </div>
+    <%end%>
+    <div class="field">
+      <%= f.label :first_name%> <br>
+      <%= f.text_field :first_name%> 
+    </div>
+    <div class="field">
+      <%= f.label :last_name%> <br>
+      <%= f.text_field :last_name%> 
+    </div>
+    <div class="field">
+      <%= f.label :email%> <br>
+      <%= f.text_field :email%>
+    </div>
+    <div class="field">
+      <%= f.label :phone%> <br>
+      <%= f.text_field :phone%>
+    </div>
+    <div class="field">
+      <%= f.label :add_image%> <br>
+      <%= f.file_field :image%> 
+    </div>
+    <img src="<%=@rep.image%>" alt="<%=@rep.first_name%>_image" width="100px" height="100px">
+    <div class="actions">
+    <%= f.submit%>
     </div>
   <%end%>
-  <div class="field">
-	<%= f.label :image%> <br>
-	<%= f.file_field :image%> 
-  </div>
-  <div class="field">
-	<%= f.label :content%> <br>
-	<%= f.text_field :first_name%> 
-  </div>
-  <div class="actions">
-	<%= f.submit%>
-  </div>
-<%end%>
+</div>

@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
       marker.lng product.longitude
       marker.infowindow product.bench_number
     end
-
+  end
       
 
   private 
