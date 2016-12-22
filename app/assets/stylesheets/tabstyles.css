@@ -1022,6 +1022,9 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ec17f', endColorstr='#23af75',GradientType=0 ) !important; /* IE6-9 */
 	margin-bottom: 20px !important;
 	border-color: #239C6B !important;
+	color: #fff !important;
+	/*border-radius: 26px !important;*/
+	
 }
 @media (min-width: 1200px) {
 .container {

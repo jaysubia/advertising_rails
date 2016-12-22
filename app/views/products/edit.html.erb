@@ -1,0 +1,33 @@
+<h1>Edit Product</h1>
+<form action="" method="post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input type="hidden" name="_method" value="patch">
+	<input type="text" name="product[street_address]" placeholder="<%=@product.street_address%>">
+	<input type="text" name="product[city" placeholder="<%=@product.city%>">
+	<input type="text" name="product[state]" placeholder="<%=@product.state%>">
+	<input type="text" name="product[zip]" placeholder="<%=@product.zip%>">
+	<input type="submit">
+</form>
+<%= form_for @product, html:{ multipart: true} do |f|%>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+    	<h2><%=pluralize(@product.errors.count, "error") %> prohibited this product from being savid:</h2>
+    	<ul>
+    		<% @product.errors.full_messages.each do |message| %>
+    		  <li><%=message%></li>
+			<%end%>
+    	</ul>
+    </div>
+  <%end%>
+  <div class="field">
+	<%= f.label :image%> <br>
+	<%= f.file_field :image%> 
+  </div>
+  <div class="field">
+	<%= f.label :content%> <br>
+	<%= f.text_field :street_address%> 
+  </div>
+  <div class="actions">
+	<%= f.submit%>
+  </div>
+<%end%>

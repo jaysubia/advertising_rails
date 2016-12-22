@@ -31,6 +31,7 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'font-awesome-sass'
+gem "paperclip", "~> 5.0.0"
 
 
 source 'https://rails-assets.org' do
