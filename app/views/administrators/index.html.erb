@@ -6,9 +6,12 @@
 		<% else %>
 			<p>You have <%=@admin.reps.count%> reps.</p>
 		<%end%>
-		<!-- <p>Your reps have NUM_OF_REP_USERS</p> -->
 	</div>
 </div>
+<%if flash[:message] %>
+  <%=flash[:message]%>
+<%end%>
+<%=@photo%>
 <div class="container">
 	<div class="row col-lg-12">
 		<h2 class="admin_title">Reps</h2>
@@ -18,13 +21,26 @@
 		    	<thead>
 		    		<th>Rep Name</th>
 		    		<th>Rep Email</th>
-		    		<th>Rep Phone</th>
+		    		<th>Upload Image</th>
+		    		<th>Featured Image</th>
 		    	</thead>
 		    <%@admin.reps.each do |rep|%>
 			  <tr>
-			  	<td><%=rep.first_name%> <%=rep.last_name%></td>
-			  	<td><a href="mailto:<%=rep.email%>"><%=rep.email%></a></td>
-			  	<td><a href="tel:<%=rep.phone%>"><%=rep.phone%></a></td>
+			  	<td>
+				  	<a href="/reps/<%=rep.id%>/edit"><%=rep.first_name%> <%=rep.last_name%></a>
+			  	</td>
+			  	<td><a href="mailto:<%=rep.email%>"><%=rep.email%></a></td>	
+			  	<td>
+			  		<%= form_tag({action: :add_photo, :controller => "reps"}, multipart: true) do %>
+			  		  <%= hidden_field_tag(:rep_id, rep.id) %>
+			  		  <%= hidden_field_tag(:title) %>
+					  <%= file_field_tag 'upload' %>
+					  <%=submit_tag%>
+					<% end %>
+			  	</td>
+			  	<td>
+			  	<a href="/<%=rep.image%>"><img src="<%=rep.image%>" alt="image" height="25px" width="30px"></a>
+			  	</td>
 			  </tr>
 		    <%end%>
 		    </table>
@@ -42,12 +58,20 @@
 			    	<th>Street Address</th>
 			    	<th>City</th>
 			    	<th>Rep Name</th>
+			    	<th>Upload Image</th>
+		    		<th>Featured Image</th>
 			    </thead>
 			<%@products.each do |product| %>
 				<tr>
-					<td><%=product.street_address%></td>
+					<td><a href="/products/<%=product.id%>/edit"><%=product.street_address%></a></td>
 					<td><%=product.city%></td>
 					<td><%=product.rep.first_name%> <%=product.rep.last_name%></td>
+					<td>
+						UPLOAD_PHOTO_BUTTON
+					</td>
+					<td>
+					  <a href="/<%=product.image%>"><img src="<%=product.image%>" alt="image" height="25px" width="30px"></a>
+					</td>
 				</tr>
 			<%end%>		
 		  </table>
