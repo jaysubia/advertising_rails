@@ -67,9 +67,10 @@
 					</nav>
 					<div class="content-wrap">
 						<div id="section-topline-1">
-							<form method="post" action="blah">
-								<input type="text" name="user[username]" placeholder="Username" class="form-control authentication-input-fields">
-								<input type="text" name="user[password]" placeholder="Password" class="form-control authentication-input-fields">
+							<form method="post" action="/sessions/login">
+								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+								<input type="text" name="email" placeholder="Email" class="form-control authentication-input-fields">
+								<input type="text" name="password" placeholder="Password" class="form-control authentication-input-fields">
 								<input type="submit" name="submit" value="Login" class="btn btn-lg btn-primary btn-block submit-button">
 							</form>
 						</div>

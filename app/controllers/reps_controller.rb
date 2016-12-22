@@ -1,7 +1,7 @@
 class RepsController < ApplicationController
 
   def index
-  	@rep = Rep.find(1)
+  	@rep = Rep.find(session[:rep_id])
   	@products = Rep.find(@rep.id).products
   end
 
