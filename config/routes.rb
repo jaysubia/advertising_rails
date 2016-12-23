@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   get '/products' => 'products#index'
 
   get '/reps' => 'reps#index'
-  get '/profile' => 'sessions#profile'
 
+  get '/reps/new' => 'reps#new'
+  get '/administrators/new' => 'administrators#new'
+
+  get '/administrators' => 'administrators#index'
   get '/administrators/index' => 'administrators#index'
 
   get 'users/index'
@@ -18,11 +21,14 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   get '/products/:id/edit' => 'products#edit'
+  get '/profile/:id' => 'sessions#profile'
+
   get '/products/:id' => 'products#show'
 
 
-  post '/reps/:id' => 'reps#add_photo'
+  get '/reps/:id/show' => 'reps#show'
   get '/reps/:id/edit' => 'reps#edit'
+
 
   post '/reps/add_photo' => 'reps#add_photo'
 

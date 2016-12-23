@@ -13,5 +13,4 @@ class Rep < ApplicationRecord
 
   validates :first_name, :last_name, presence: true, length: {minimum: 2}
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: {with: EMAIL_REGEX }
-  validates :image, attachment_presence: true
 end

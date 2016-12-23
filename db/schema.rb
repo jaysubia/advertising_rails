@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221192713) do
+ActiveRecord::Schema.define(version: 20161222225657) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "first_name"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20161221192713) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "bench_number"
     t.string   "traffic"
     t.string   "primary_street"
@@ -37,6 +37,10 @@ ActiveRecord::Schema.define(version: 20161221192713) do
     t.string   "cor"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["rep_id"], name: "index_products_on_rep_id"
   end
 
@@ -47,8 +51,12 @@ ActiveRecord::Schema.define(version: 20161221192713) do
     t.string   "password_digest"
     t.string   "phone"
     t.integer  "administrator_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["administrator_id"], name: "index_reps_on_administrator_id"
   end
 

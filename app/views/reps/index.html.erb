@@ -41,7 +41,7 @@
 			<h1>Dashboard App</h1>
 			<ul id="main-nav">
 				<li><a href="/reps">Dashboard</a></li>
-				<li><a href="/profile/">Profile</a></li>
+				<li><a href="/profile/<%= @rep.id %>">Profile</a></li>
 			</ul>
 			<ul id="session-nav">
 				<li><a href="logout">Log off</a></li>
@@ -52,14 +52,13 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h2 class="salutation">Howdy, {Reps's First Name}!</h2>
-		<div class="mytable">
-			<a href="/new" class="btn btn-default add">Add New</a>	
+		<h2 class="salutation">Howdy, <%= @rep.first_name %>!</h2>
+		<div class="mytable reps">
+		<a href="/reps/new" class="btn btn-default add">Add New Client</a>	
 			<div class="clr"></div>
-				<table cellspaceing="0" cellpadding="0" width="95%" border="0" align="center">
+				<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
 					<tr>
 						<th>Client Name</th>
-						<th>Company Name</th>
 						<th>Contact Info</th>
 						<th>Payment Status</th>
 						<th>Contract Expiration Date</th>
@@ -70,11 +69,11 @@
 					<tr><td colspan="6" height="10"></td></tr> 
 					<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> <!-- Make sure this empty row is included -->
 					<tr>
-						<td width="170" valign="middle" class="td-division"><a href="#" data-toggle="modal" data-target=".modal">Jay Subia</a></td>
-	                	<td width="180" valign="middle" class="td-division">Jay Enterprises</td>
-	                	<td width="180" valign="middle" class="td-division">1-800-555-5555 <br/> <a href="mailto:">jay@subia.com </a></td>
+						<td width="200" valign="middle" class="td-division"><a href="#" data-toggle="modal" data-target=".modal">Jay Subia</a></td>
+	                	<!-- <td width="180" valign="middle" class="td-division">Jay Enterprises</td> -->
+	                	<td width="200" valign="middle" class="td-division">1-800-555-5555 <br/> <a href="mailto:">jay@subia.com </a></td>
 	                	<td width="180" valign="middle" class="td-division">Up to date</td>
-	                	<td width="220" valign="middle" class="td-division">12/24/2016</td>
+	                	<td width="200" valign="middle" class="td-division">12/24/2016</td>
 	    				<td align="center" valign="middle" class="td-division date-time">
 	    					<ul>
 								<li><a href="#">Edit</a></li>

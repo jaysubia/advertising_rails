@@ -1,0 +1,83 @@
+<div class="jumbotron">
+	<div class="container">
+		<h1>Hello <%=@admin.first_name%></h1>
+		<% if @admin.reps.count < 2%>
+			<p>You have <%=@admin.reps.count%> rep.</p>
+		<% else %>
+			<p>You have <%=@admin.reps.count%> reps.</p>
+		<%end%>
+	</div>
+</div>
+<%if flash[:message] %>
+  <%=flash[:message]%>
+<%end%>
+<%=@photo%>
+<div class="container">
+	<div class="row col-lg-12">
+		<h2 class="admin_title">Reps</h2>
+		<div class="admin_paragraph">
+		  <% if @admin.reps %>
+		    <table class="table table-striped">
+		    	<thead>
+		    		<th>Rep Name</th>
+		    		<th>Rep Email</th>
+		    		<th>Upload Image</th>
+		    		<th>Featured Image</th>
+		    	</thead>
+		    <%@admin.reps.each do |rep|%>
+			  <tr>
+			  	<td>
+				  	<a href="/reps/<%=rep.id%>/edit"><%=rep.first_name%> <%=rep.last_name%></a>
+			  	</td>
+			  	<td><a href="mailto:<%=rep.email%>"><%=rep.email%></a></td>	
+			  	<td>
+			  		<%= form_tag({action: :add_photo, :controller => "reps"}, multipart: true) do %>
+			  		  <%= hidden_field_tag(:rep_id, rep.id) %>
+			  		  <%= hidden_field_tag(:title) %>
+					  <%= file_field_tag 'upload' %>
+					  <%=submit_tag%>
+					<% end %>
+			  	</td>
+			  	<td>
+			  	<a href="/<%=rep.image%>"><img src="<%=rep.image%>" alt="image" height="25px" width="30px"></a>
+			  	</td>
+			  </tr>
+		    <%end%>
+		    </table>
+		  <%else%>
+			<p>You do not have any reps.</p>
+		  <%end%>
+		</div>
+	</div>
+	<div class="row col-lg-12">
+		<h2 class="admin_title">Products</h2>
+		<div class="admin_paragraph">
+		  <% if @products %>
+		  <table class="table table-striped">
+			    <thead>
+			    	<th>Street Address</th>
+			    	<th>City</th>
+			    	<th>Rep Name</th>
+			    	<th>Upload Image</th>
+		    		<th>Featured Image</th>
+			    </thead>
+			<%@products.each do |product| %>
+				<tr>
+					<td><a href="/products/<%=product.id%>/edit"><%=product.street_address%></a></td>
+					<td><%=product.city%></td>
+					<td><%=product.rep.first_name%> <%=product.rep.last_name%></td>
+					<td>
+						UPLOAD_PHOTO_BUTTON
+					</td>
+					<td>
+					  <a href="/<%=product.image%>"><img src="<%=product.image%>" alt="image" height="25px" width="30px"></a>
+					</td>
+				</tr>
+			<%end%>		
+		  </table>
+		  <%else%>
+		    <p>You do not have any products.</p>
+		  <%end%>
+		</div>
+	</div>
+</div>
