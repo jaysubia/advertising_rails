@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
 # add restrictions for profile - only logged in user can go to profile. 
 def index
 @products = Product.all
@@ -8,6 +9,11 @@ def index
   marker.infowindow product.bench_number
 	end
 end
+
+	def test
+		@products = Product.all
+	end
+
 
 def logout
   if session[:user_id] != nil 
@@ -24,6 +30,7 @@ end
 def profile
 
 end
+
 
 def login 
   admin = Administrator.find_by_email(params[:email])
