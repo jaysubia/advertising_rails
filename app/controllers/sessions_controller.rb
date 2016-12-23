@@ -12,7 +12,7 @@ end
 
 	def test
 		@products = Product.all
-	end
+  end
 
 
 def logout

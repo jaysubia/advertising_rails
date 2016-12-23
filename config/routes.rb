@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/' => 'sessions#index'
   post '/sessions/login' => 'sessions#login'
   get '/logout' => 'sessions#logout'
-  get '/profile' => 'sessions#profile'
 
   post '/products' => 'products#create'
   get '/products' => 'products#index'
@@ -12,22 +11,28 @@ Rails.application.routes.draw do
   get '/products/:id' => 'products#show'
   get 'products/show' => 'products#show'
 
+  get '/reps/new' => 'reps#new'
+  get '/administrators/new' => 'administrators#new'
 
-  get '/administrators/index' => 'administrators#index'
+  get '/administrators' => 'administrators#index'
 
   get 'users/index'
 
   post '/users' => 'users#create'
-
-
 
   get '/reps' => 'reps#index'
   post '/reps/:id' => 'reps#add_photo'
   get '/reps/:id/edit' => 'reps#edit'
 
   patch '/reps/:id' => 'reps#update'
-  post '/reps/add_photo' => 'reps#add_photo'
+  get '/products/:id/edit' => 'products#edit'
+  get '/profile/:id' => 'sessions#profile'
 
+  get '/products/:id' => 'products#show'
+
+  get '/reps/:id/show' => 'reps#show'
+
+  post '/reps/add_photo' => 'reps#add_photo'
   
   get '/administrators/index' => 'administrators#index'
   post '/administrators/index' => 'reps#add_photo'
