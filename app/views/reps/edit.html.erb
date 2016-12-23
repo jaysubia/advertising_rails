@@ -1,9 +1,32 @@
-<h1>Edit Rep</h1>
+<div id="nav-container">
+  <nav>
+    <h1>Dashboard App</h1>
+    <ul id="main-nav">
+    <% if session[:user_id] != nil%>
+      <li><a href="/users">Dashboard</a></li>
+    <%elsif session[:rep_id] != nil%>
+      <li><a href="/reps">Dashboard</a></li>
+    <%elsif session[:admin_id] != nil%>
+      <li><a href="/administrators/index">Dashboard</a></li>
+    <%end%>
+      <li><a href="/profile/">Profile</a></li>
+    </ul>
+    <ul id="session-nav">
+      <li><a href="logout">Log off</a></li>
+    </ul>
+  </nav>
+</div>
+<%if flash[:errors]%>
+  <%flash[:errors].each do |error|%>
+    <p><%=error%></p>
+  <%end%>
+<%end%>
 <div class="container">
+  <h1>Edit <%=@rep.first_name%></h1>
   <%= form_for @rep, html:{ multipart: true} do |f|%>
     <% if @rep.errors.any? %>
       <div id="error_explanation">
-        <h2><%=pluralize(@rep.errors.count, "error") %> prohibited this rep from being savid:</h2>
+        <h2><%=pluralize(@rep.errors.count, "error") %> prohibited this rep from being saved:</h2>
         <ul>
           <% @rep.errors.full_messages.each do |message| %>
             <li><%=message%></li>

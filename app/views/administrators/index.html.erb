@@ -7,7 +7,7 @@
 				<li><a href="/profile/<%= @admin.id %>">Profile</a></li>
 			</ul>
 			<ul id="session-nav">
-				<li><a href="logout">Log off</a></li>
+				<li><a href="/logout">Log off</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -21,10 +21,9 @@
 		<div class="clr"></div>
 				<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
 					<tr>
+						<th>Profile Picture</th>
 						<th>Rep Name</th>
-						<!-- <th>Company Name</th> -->
 						<th>Contact Info</th>
-						<th>Total Sales</th>
 						<th>Actions</th>
 					</tr>
 
@@ -33,13 +32,12 @@
 					<tr><td colspan="6" height="10"></td></tr> 
 					<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> <!-- Make sure this empty row is included -->
 					<tr>
+	                	<td width="180" valign="middle" class="td-division"><img src="<%=rep.image%>" alt="<%=rep.first_name%>'s_image" height="35px" width="35px" id="image"></td>
 						<td width="230" valign="middle" class="td-division"><a href="/reps/<%= rep.id %>/show"><%= rep.first_name %></a></td>
-	                	<!-- <td width="200" valign="middle" class="td-division">Jay Enterprises</td> -->
-	                	<td width="230" valign="middle" class="td-division"><%= rep.phone %> <br/> <a href="mailto:<%= rep.email %>"><%= rep.email %></a></td>
-	                	<td width="180" valign="middle" class="td-division">$0.00</td>
+	                	<td width="230" valign="middle" class="td-division"><a href="tel:<%=rep.phone%>"><%= rep.phone %></a> <br/> <a href="mailto:<%= rep.email %>"><%= rep.email %></a></td>
 	    				<td align="center" valign="middle" class="td-division date-time">
 	    					<ul>
-								<li><a href="#">Edit</a></li>
+								<li><a href="/reps/<%=rep.id%>/edit">Edit</a></li>
 								<li><a class="md-trigger" data-modal="modal-2" href="#">Remove</a></li>
 							</ul>
 	    				</td>

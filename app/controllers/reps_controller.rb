@@ -11,6 +11,7 @@ class RepsController < ApplicationController
         flash[:message] = "Rep Updated"
         redirect_to :back
       else
+        flash[:errors] = @rep.errors.full_messages
         flash[:message] = "Something went wrong"
         redirect_to :back
       end 

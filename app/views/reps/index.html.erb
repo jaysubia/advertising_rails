@@ -37,28 +37,28 @@
 
 
 <div id="nav-container">
-		<nav>
-			<h1>Dashboard App</h1>
-			<ul id="main-nav">
-				<% if session[:user_id] != nil%>
-					<li><a href="/users">Dashboard</a></li>
-				<%elsif session[:rep_id] != nil%>
-					<li><a href="/reps">Dashboard</a></li>
-				<%elsif session[:admin_id] != nil%>
-					<li><a href="/administrators/index">Dashboard</a></li>
-				<%end%>
-				<li><a href="/profile/">Profile</a></li>
-			</ul>
-			<ul id="session-nav">
-				<li><a href="logout">Log off</a></li>
-			</ul>
-		</nav>
-	</div>
+	<nav>
+		<h1>Dashboard App</h1>
+		<ul id="main-nav">
+			<% if session[:user_id] != nil%>
+				<li><a href="/users">Dashboard</a></li>
+			<%elsif session[:rep_id] != nil%>
+				<li><a href="/reps">Dashboard</a></li>
+			<%elsif session[:admin_id] != nil%>
+				<li><a href="/administrators/index">Dashboard</a></li>
+			<%end%>
+			<li><a href="/profile/">Profile</a></li>
+		</ul>
+		<ul id="session-nav">
+			<li><a href="/logout">Log off</a></li>
+		</ul>
+	</nav>
+</div>
 
 
 <div class="jumbotron">
 	<div class="container">
-		<h2 class="salutation">Howdy, <a href="/reps/<%=@rep.id%>"><%=@rep.first_name%></a>!</h2>
+		<h2 class="salutation">Howdy, <%=@rep.first_name%>!</h2>
 		<div class="mytable">
 			<a href="/users/new" class="btn btn-default add">Add New Client</a>	
 			<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
@@ -66,7 +66,7 @@
 					<th>Client Name</th>
 					<th>Contact Info</th>
 					<th>Payment Status</th>
-					<th>Contract Expiration Date</th>
+					<th>Client Since</th>
 					<th>Actions</th>
 				</tr>
 
@@ -79,12 +79,9 @@
 						<td width="170" valign="middle" class="td-division">
 							<a href="#" data-toggle="modal" data-target=".modal"><%=user.first_name%> <%=user.last_name%></a>
 						</td>
-	                	<td width="180" valign="middle" class="td-division">
-	                		COMPANY_NAME
-	                	</td>
 	                	<td width="180" valign="middle" class="td-division"><a href="mailto:"><%=user.email%></a></td>
-	                	<td width="180" valign="middle" class="td-division">Up to date</td>
-	                	<td width="220" valign="middle" class="td-division">12/24/2016</td>
+	                	<td width="220" valign="middle" class="td-division">Pending</td>
+	                	<td width="180" valign="middle" class="td-division"><%=user.created_at.strftime("%b. %d %Y")%></td>
 	    				<td align="center" valign="middle" class="td-division date-time">
 	    					<ul>
 								<li><a href="#">Edit</a></li>
@@ -93,6 +90,7 @@
 	    				</td>
 						<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> 
   					</tr>
+
 				  <%end%>
 				<%end%>
 			</table>	

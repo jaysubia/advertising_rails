@@ -28,7 +28,13 @@ def logout
 end
 
 def profile
-  # if session user not nil find user...same for rep / admin
+  if session[:user_id] != nil
+    @user = User.find(session[:user_id])
+  elsif session[:rep_id] != nil
+    @rep = Rep.find(session[:rep_id])
+  elsif session[:admin_id] != nil
+    @admin = Administrator.find(session[:admin_id])
+  end
 end
 
 

@@ -50,7 +50,7 @@
 				<li><a href="/profile/">Profile</a></li>
 			</ul>
 			<ul id="session-nav">
-				<li><a href="logout">Log off</a></li>
+				<li><a href="/logout">Log off</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -58,7 +58,8 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h2 class="salutation">Howdy, <a href="/users/<%=@user.id%>"><%=@user.first_name%></a>!</h2>
+		<h1 class="salutation">Howdy, <a href="/users/<%=@user.id%>"><%=@user.first_name%></a>!</h1>
+		<h3>Your Products</h3>
 		<div class="mytable">
 			<div class="row">
 				<div class="mytable col-md-6">
@@ -78,7 +79,7 @@
 						  <%@user.products_purchased.each do |product|%>
 							<tr>
 							    <td width="170" valign="middle" class="td-division"><a href="#link-to-pin-on-map"><%=product.bench_number%></a></td>
-							    <td width="170" valign="middle" class="td-division"><a href="#link-to-pin-on-map"><%=product.street_address%></a></td>
+							    <td width="170" valign="middle" class="td-division"><a href="#link-to-pin-on-map"><%=product.primary_street%></a></td>
 							 </tr>
 							<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);">
 								<td colspan="6" height="11"></td>
@@ -94,7 +95,6 @@
 		</div>
 	</div>
 </div>
-
 
 <script type="text/javascript">
 	$('#modal').on('shown.bs.modal', function () {

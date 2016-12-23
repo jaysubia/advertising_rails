@@ -25,23 +25,26 @@ Rails.application.routes.draw do
   get '/users/new' => 'users#new'
   post '/users' => 'users#create'
   get '/users/:id' => 'users#show'
+  patch '/users/:id' => 'users#update'
 
   get '/reps' => 'reps#index'
   post '/reps/:id' => 'reps#add_photo'
   get '/reps/:id/edit' => 'reps#edit'
-
   patch '/reps/:id' => 'reps#update'
+
   get '/products/:id/edit' => 'products#edit'
+  get '/reps/:id/show' => 'reps#show'
   get '/profile/:id' => 'sessions#profile'
+  patch '/reps/:id' => 'reps#update'
 
   get '/products/:id' => 'products#show'
 
-  get '/reps/:id/show' => 'reps#show'
 
   post '/reps/add_photo' => 'reps#add_photo'
   
   get '/administrators/index' => 'administrators#index'
   post '/administrators/index' => 'reps#add_photo'
+  patch '/administrators/:id' => 'administrators#update'
 
   get 'test' => 'sessions#test'
 

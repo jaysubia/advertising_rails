@@ -7,7 +7,7 @@
 		<%elsif session[:rep_id] != nil%>
 			<li><a href="/reps">Dashboard</a></li>
 		<%elsif session[:admin_id] != nil%>
-			<li><a href="/administrator/index">Dashboard</a></li>
+			<li><a href="/administrators/index">Dashboard</a></li>
 		<%end%>
 			<li><a href="/profile/">Profile</a></li>
 		</ul>
@@ -16,8 +16,23 @@
 		</ul>
 	</nav>
 </div>
+<%if flash[:errors]%>
+<%flash[:errors].each do |error|%>
+<p><%=error%></p>
+<%end%>
+<%end%>
 <div class="container">
-	<h1>Hello <%=@rep.first_name%>!</h1>
+	<h1 class="greeting col-md-6">Hello <%=@rep.first_name%>!</h1>
+	<div class="image_holder col-md-6">
+		<img src="<%=@rep.image%>" alt="<%=@rep.first_name%>_<%=@rep.image%>" height='150px' width='150px' id="image">
+		<%= form_for @rep, html:{ multipart: true} do |f|%>
+		<div class="field">
+		  <%= f.file_field :image%> 
+		</div>
+		<input type="hidden" value="<%=@rep.id%>" name="id">
+		<%= f.submit%>
+		<%end%>
+	</div>
 	<div class="row">
 		<p><strong>Name:</strong> <%=@rep.first_name%> <%=@rep.last_name%></p>
 		<p><strong>Email:</strong> <%=@rep.email%></p>
