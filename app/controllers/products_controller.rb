@@ -11,12 +11,12 @@ class ProductsController < ApplicationController
   end
 
   def update
-      @product = Product.find(params[:id])
-      if @product.update(product_params)
+      product = Product.find(params[:id])
+      if product.update(product_params)
         flash[:message] = "Product Updated"
         redirect_to :back
       else
-        flash[:message] = "Something went wrong"
+        flash[:errors] = product.errors.full_messages
         redirect_to :back
       end 
   end
@@ -31,7 +31,6 @@ class ProductsController < ApplicationController
  
   def index 
    
-    end
   end
       
 

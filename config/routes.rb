@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get '/products/:id' => 'products#show'
   get 'products/show' => 'products#show'
 
-  get '/reps/new' => 'reps#new'
   get '/administrators/new' => 'administrators#new'
 
   get '/administrators' => 'administrators#index'
@@ -22,25 +21,25 @@ Rails.application.routes.draw do
   get '/profile' => 'sessions#profile'
 
   get '/users' => 'users#index'
-  get '/users/new' => 'users#new'
   post '/users' => 'users#create'
-  get '/users/:id' => 'users#show'
+  get '/users/new' => 'users#new'
+  get '/users/:id/edit' => 'users#edit'
   patch '/users/:id' => 'users#update'
-
+  post '/users/create' => 'users#create'
+  
   get '/reps' => 'reps#index'
+  post '/reps/create' => 'reps#create'
+  get '/reps/new' => 'reps#new'
   post '/reps/:id' => 'reps#add_photo'
   get '/reps/:id/edit' => 'reps#edit'
   patch '/reps/:id' => 'reps#update'
-
+  delete '/reps/:id' => 'reps#destroy'
+  
   get '/products/:id/edit' => 'products#edit'
   get '/reps/:id/show' => 'reps#show'
   get '/profile/:id' => 'sessions#profile'
-  patch '/reps/:id' => 'reps#update'
 
   get '/products/:id' => 'products#show'
-
-
-  post '/reps/add_photo' => 'reps#add_photo'
   
   get '/administrators/index' => 'administrators#index'
   post '/administrators/index' => 'reps#add_photo'

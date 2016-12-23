@@ -17,7 +17,7 @@
 	<div class="container">
 		<h2 class="salutation">Howdy, <%= @admin.first_name %>!</h2>
 		<div class="mytable admins">
-		<a href="/administrators/new" class="btn btn-default add">Add New Rep/Admin</a>	
+		<a href="/reps/new" class="btn btn-default add">Add New Rep</a>	
 		<div class="clr"></div>
 				<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
 					<tr>
@@ -38,7 +38,13 @@
 	    				<td align="center" valign="middle" class="td-division date-time">
 	    					<ul>
 								<li><a href="/reps/<%=rep.id%>/edit">Edit</a></li>
-								<li><a class="md-trigger" data-modal="modal-2" href="#">Remove</a></li>
+								<li>
+									<form action="/reps/<%=rep.id%>" method="POST">
+										<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+										<input type="hidden" name="_method" value="DELETE">
+										<button class="btn btn-link">Remove</button>
+									</form>
+								</li>
 							</ul>
 	    				</td>
   					</tr>

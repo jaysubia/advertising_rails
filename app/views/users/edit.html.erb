@@ -16,24 +16,17 @@
 		</ul>
 	</nav>
 </div>
-<%if flash[:errors]%>
-  <%flash[:errors].each do |error|%>
-	<p><%=error%></p>
-  <%end%>
-<%end%>
-<%if flash[:message]%>
-	<p><%=flash[:message]%></p>
-<%end%>
 <div class="container">
-	<h1>Add A New User</h1>
-		<form action="/users/create" method="POST" id="add_new_user">
+	<h1>Edit User</h1>
+	<div class="row">
+		<form action="/users/<%=@user.id%>" method="POST" id="add_new_user">
 			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-			<input type="hidden" name="user[rep_id]" value="<%=@rep.id%>">
-			<input type="text" name="user[first_name]" placeholder="Enter First Name">
-			<input type="text" name="user[last_name]" placeholder="Enter Last Name">
-			<input type="text" name="user[email]" placeholder="Enter Email">
+			<input type="hidden" name="_method" value="PATCH">
+			<input type="text" name="user[first_name]" value="<%=@user.first_name%>">
+			<input type="text" name="user[last_name]" value="<%=@user.last_name%>">
+			<input type="text" name="user[email]" value="<%=@user.email%>">
 			<input type="text" name="user[password]" placeholder="Enter Password">
-			<input type="submit">
+			<input type="submit" value="Update User">
 		</form>
 	</div>
 </div>

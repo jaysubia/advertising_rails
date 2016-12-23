@@ -18,9 +18,22 @@ class RepsController < ApplicationController
   end
 
   def create
-    fail
+    rep = Rep.new(rep_params)
+    if rep.save
+      flash[:message] = "Rep saved."
+      redirect_to :back
+    else
+      flash[:errors] = rep.errors.full_messages
+      redirect_to :back
+    end
   end
 
+  def destroy
+    rep = Rep.find(params[:id])
+    rep.destroy
+    flash[:message] = "Rep deleted."
+    redirect_to :back
+  end
 
   def edit 
     @rep = Rep.find(params[:id])

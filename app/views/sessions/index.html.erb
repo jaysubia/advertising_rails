@@ -4,11 +4,6 @@
 <!-- only if you need custom infoboxes -->
 
 <!--  -->
-	<svg class="hidden">
-		<defs>
-			<path id="tabshape" d="M80,60C34,53.5,64.417,0,0,0v60H80z"/>
-		</defs>
-	</svg>
 	<div class="container no-bottom-space">
 		<section>
 			<div class="tabs tabs-style-linemove">
@@ -25,7 +20,7 @@
 						<script type = "text/javascript">
 				        function initMap() {
 					        var map = new google.maps.Map(document.getElementById('map'), {
-								zoom: 3,
+								zoom: 11,
 								center: {lat: 34.052235, lng: -118.243683}
 					        });
 					        // Create an array of alphabetical characters used to label the markers.
@@ -83,6 +78,7 @@
 							marker.addListener('click', function() {
 								infowindow.open(map, marker);
 							});
+
 				        }
 						</script>
 					    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">

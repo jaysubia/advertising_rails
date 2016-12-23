@@ -21,6 +21,9 @@
     <p><%=error%></p>
   <%end%>
 <%end%>
+<% if flash[:message]%>
+  <p><%=flash[:message]%></p>
+<%end%>
 <div class="container">
   <h1>Edit <%=@rep.first_name%></h1>
   <%= form_for @rep, html:{ multipart: true} do |f|%>

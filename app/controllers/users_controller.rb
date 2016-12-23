@@ -3,7 +3,14 @@ class UsersController < ApplicationController
   	@user = User.find(session[:user_id])
   end
   def create
-    @user = User.create( user_params )
+    user = User.create( user_params )
+    if user.save
+      flash[:message] = "User Saved"
+      redirect_to :back
+    else
+      flash[:errors] = user.errors.full_messages
+      redirect_to :back
+    end
   end
   def new
   	@rep = Rep.find(session[:rep_id])
@@ -11,6 +18,10 @@ class UsersController < ApplicationController
 
   def show
 
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
   def update
       @user = User.find(params[:id])
@@ -26,6 +37,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :rep_id)
   end
 end
