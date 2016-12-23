@@ -1,76 +1,59 @@
+
+<div id="nav-container">
+		<nav>
+			<h1>Dashboard App</h1>
+			<ul id="main-nav">
+				<li><a href="/administrators">Dashboard</a></li>
+				<li><a href="/profile/<%= @admin.id %>">Profile</a></li>
+			</ul>
+			<ul id="session-nav">
+				<li><a href="logout">Log off</a></li>
+			</ul>
+		</nav>
+	</div>
+
+
 <div class="jumbotron">
 	<div class="container">
-		<h1>Hello <%=@admin.first_name%></h1>
-		<% if @admin.reps.count < 2%>
-			<p>You have <%=@admin.reps.count%> rep.</p>
-		<% else %>
-			<p>You have <%=@admin.reps.count%> reps.</p>
-		<%end%>
+		<h2 class="salutation">Howdy, <%= @admin.first_name %>!</h2>
+		<div class="mytable admins">
+		<a href="/administrators/new" class="btn btn-default add">Add New Rep/Admin</a>	
+		<div class="clr"></div>
+				<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
+					<tr>
+						<th>Rep Name</th>
+						<!-- <th>Company Name</th> -->
+						<th>Contact Info</th>
+						<th>Total Sales</th>
+						<th>Actions</th>
+					</tr>
+
+				<% @reps.each do |rep|%>
+					<!-- Follow this sample row below for displaying each Reps' clients -->
+					<tr><td colspan="6" height="10"></td></tr> 
+					<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> <!-- Make sure this empty row is included -->
+					<tr>
+						<td width="230" valign="middle" class="td-division"><a href="/reps/<%= rep.id %>/show"><%= rep.first_name %></a></td>
+	                	<!-- <td width="200" valign="middle" class="td-division">Jay Enterprises</td> -->
+	                	<td width="230" valign="middle" class="td-division"><%= rep.phone %> <br/> <a href="mailto:<%= rep.email %>"><%= rep.email %></a></td>
+	                	<td width="180" valign="middle" class="td-division">$0.00</td>
+	    				<td align="center" valign="middle" class="td-division date-time">
+	    					<ul>
+								<li><a href="#">Edit</a></li>
+								<li><a class="md-trigger" data-modal="modal-2" href="#">Remove</a></li>
+							</ul>
+	    				</td>
+  					</tr>
+					<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> 
+
+				<% end %>
+				</table>	
+			</div>
 	</div>
 </div>
-<%if flash[:message] %>
-  <p><%=flash[:message]%></p>
-<%end%>
-<%=@photo%>
-<div class="container">
-	<div class="row col-lg-12">
-		<h2 class="admin_title">Reps</h2>
-		<div class="admin_paragraph">
-		  <% if @admin.reps %>
-		    <table class="table table-striped">
-		    	<thead>
-		    		<th>Rep Name</th>
-		    		<th>Rep Email</th>
-		    		<th>Phone</th>
-		    		<th>Featured Image</th>
-		    	</thead>
-		    <%@admin.reps.each do |rep|%>
-			  <tr>
-			  	<td>
-				  	<a href="/reps/<%=rep.id%>/edit"><%=rep.first_name%> <%=rep.last_name%></a>
-			  	</td>
-			  	<td><a href="mailto:<%=rep.email%>"><%=rep.email%></a></td>	
-			  	<td>
-			  		<a href="tel:<%=rep.phone%>"><%=rep.phone%></a>
-			  	</td>
-			  	<td>
-			  	  <a href="#"><img src="<%=rep.image%>" alt="<%=rep.image%>" height="35px" width="35px" ></a>
-			  	</td>
-			  </tr>
-		    <%end%>
-		    </table>
-		  <%else%>
-			<p>You do not have any reps.</p>
-		  <%end%>
-		</div>
-	</div>
-	<div class="row col-lg-12">
-		<h2 class="admin_title">Products</h2>
-		<div class="admin_paragraph">
-		  <% if @products %>
-		  <table class="table table-striped">
-			    <thead>
-			    	<th>Street Address</th>
-			    	<th>City</th>
-			    	<th>Rep Name</th>
-		    		<th>Featured Image</th>
-			    </thead>
-			<%@products.each do |product| %>
-				<tr>
-					<td><a href="/products/<%=product.id%>/edit"><%=product.street_address%></a></td>
-					<td><%=product.city%></td>
-					<td>
-						<a href="/reps/<%=product.rep.id%>/edit"><%=product.rep.first_name%> <%=product.rep.last_name%></a>
-					</td>
-					<td>
-					  <a href="#"><img src="<%=product.image%>" alt="image" height="35px" width="35px"></a>
-					</td>
-				</tr>
-			<%end%>		
-		  </table>
-		  <%else%>
-		    <p>You do not have any products.</p>
-		  <%end%>
-		</div>
-	</div>
-</div>
+
+<script type="text/javascript">
+	$('#modal').on('shown.bs.modal', function () {
+  	// $('#myInput').focus()
+})
+</script>

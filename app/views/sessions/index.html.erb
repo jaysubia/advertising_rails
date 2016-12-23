@@ -5,118 +5,151 @@
 
 <!--  -->
 	<svg class="hidden">
-			<defs>
-				<path id="tabshape" d="M80,60C34,53.5,64.417,0,0,0v60H80z"/>
-			</defs>
-		</svg>
-		<div class="container no-bottom-space">
-			<section>
-				<div class="tabs tabs-style-linemove">
-					<nav>
-						<ul>
-							<li><a href="#section-linemove-1" class="icon icon-home"><span>Browse Inventory</span></a></li>
-							<li><a href="#section-linemove-2" class="icon icon-box"><span>Products</span></a></li>
-							<li><a href="#section-linemove-3" class="icon icon-display"><span>Login</span></a></li>
-						</ul>
-					</nav>
-					<div class="content-wrap">
-						<section id="section-linemove-1" class="">
-							<div style='width: 100%;'><!-- google map  -->
-	  							<div id="map" style='width: 100%; height: 400px;'></div>
-							</div> <!-- google map  -->
-							<script type = "text/javascript">
-							handler = Gmaps.build('Google',
-							{markers:
-							  {clusterer: {
-							    gridSize: 60,
-							    maxZoom: 30,
-							    styles: [ {
-							      textSize: 10,
-							      textColor: 'white',
-							      url: 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m1.png',
-							      height: 60,
-							      width: 60 }
-							    , {
-							      textSize: 14, 
-							      textColor: 'black',
-							      url:'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m2.png',
-							      height: 60,
-							      width: 60 }
-							    , {
-							     textSize: 18, 
-							     textColor: 'white',
-							     url: 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m3.png',
-							     width: 60,
-							     height: 60}
-							    ]}}}
-							);
-								handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-	 							 markers = handler.addMarkers();
-	  							handler.bounds.extendWith(markers);
-	  							handler.fitMapToBounds();
-								});
-								</script>
-							
-						</section>
-						<section id="section-linemove-2">
-							<p>
-								2
-							</p>
-						</section>
-						<section id="section-linemove-4" class="authentication-section">
-							<div class="tabs tabs-style-topline authentication-box">
-					<nav>
-						<ul>
-							<li><a href="#section-topline-1" ><span>Login</span></a></li>
-						</ul>
-					</nav>
-					<div class="content-wrap">
-						<div id="section-topline-1">
-							<form method="post" action="/sessions/login">
-								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-								<input type="text" name="email" placeholder="Email" class="form-control authentication-input-fields">
-								<input type="text" name="password" placeholder="Password" class="form-control authentication-input-fields">
-								<input type="submit" name="submit" value="Login" class="btn btn-lg btn-primary btn-block submit-button">
-							</form>
-						</div>
-					</div>
-					</div>
-				</section>
-			</div><!-- /content -->
-		</div><!-- /tabs -->
-	</section>
-</div><!-- /container -->
+		<defs>
+			<path id="tabshape" d="M80,60C34,53.5,64.417,0,0,0v60H80z"/>
+		</defs>
+	</svg>
+	<div class="container no-bottom-space">
+		<section>
+			<div class="tabs tabs-style-linemove">
+				<nav>
+					<ul>
+						<li><a href="#section-linemove-1" class="icon icon-home"><span>Browse Inventory</span></a></li>
+						<li><a href="#section-linemove-2" class="icon icon-box"><span>Products</span></a></li>
+						<li><a href="#section-linemove-3" class="icon icon-display"><span>Login</span></a></li>
+					</ul>
+				</nav>
+				<div class="content-wrap">
+					<section id="section-linemove-1" class="">
+						<div style='width: 100%;'><!-- google map  -->
+								<div id="map" style='width: 100%; height: 400px;'></div>
+						</div> <!-- google map  -->
+						<script type = "text/javascript">
+				        function initMap() {
+					        var map = new google.maps.Map(document.getElementById('map'), {
+								zoom: 3,
+								center: {lat: 34.052235, lng: -118.243683}
+					        });
+					        // Create an array of alphabetical characters used to label the markers.
+					        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+					        // Add some markers to the map.
+					        // Note: The code uses the JavaScript Array.prototype.map() method to
+					        // create an array of markers based on a given "locations" array.
+					        // The map() method here has nothing to do with the Google Maps API.
+					        var locations = [ ]
+					        <% @products.each do |product| %>
+					          locations.push({lat:<%= product.latitude %>, lng: <%= product.longitude %>})
+					        <% end %>
+        
+					        var markers = locations.map(function(location, i) {
+								return new google.maps.Marker({
+								position: location,
+					            label: labels[i % labels.length]
+					            });
+					        });
 
-<div class="footer-wrapper">								
-    <div class="footer">
-      	<div class="row col-lg-4">
-	        <h2>Our Offices</h2>
-	        <p>
-	          Coding Dojo Project Team <br>
-	          175 E. Olive St. <br>
-	          Burbank, CA 91502<br>
-	          <a href="tel:13231231220">(323)123-1220</a>
-	        </p>
-      	</div>
-	    <div class="row col-lg-4">
-	        <h2>Stay In Touch</h2>
-	        <h2>
-	          <a href="http://www.facebook.com" class="social_links"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-	          <a href="http://www.instagram.com" class="social_links"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-	          <a href="http://www.github.com" class="social_links"><i class="fa fa-github" aria-hidden="true"></i></a>
-	          <a href="http://www.snapchat.com" class="social_links"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a>
-	          <a href="http://www.linkedin.com" class="social_links"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-	        </h2>
+					        // Add a marker clusterer to manage the markers.
+					        var markerCluster = new MarkerClusterer(map, markers,
+				            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      
+							var contentString = '<div id="content">'+
+							'<div id="siteNotice">'+
+							'</div>'+
+							'<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+							'<div id="bodyContent">'+
+							'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+							'sandstone rock formation in the southern part of the '+
+							'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+							'south west of the nearest large town, Alice Springs; 450&#160;km '+
+							'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+							'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+							'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+							'Aboriginal people of the area. It has many springs, waterholes, '+
+							'rock caves and ancient paintings. Uluru is listed as a World '+
+							'Heritage Site.</p>'+
+							'<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+							'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+							'(last visited June 22, 2009).</p>'+
+							'</div>'+
+							'</div>';
+
+						    var infowindow = new google.maps.InfoWindow({
+								content: contentString
+							});
+
+							var marker = new google.maps.Marker({
+								position: locations,
+								map: map,
+								title: 'Uluru (Ayers Rock)'
+							});
+							marker.addListener('click', function() {
+								infowindow.open(map, marker);
+							});
+				        }
+						</script>
+					    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+					    </script>
+					    <script async defer
+					    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBspzXz2pzBjvnUWtQkjmZNSubZCvYhSL8&callback=initMap">
+					    </script>
+					</section>
+					<section id="section-linemove-2">
+						<p>
+							2
+						</p>
+					</section>
+					<section id="section-linemove-4" class="authentication-section">
+						<div class="tabs tabs-style-topline authentication-box">
+							<nav>
+								<ul>
+									<li><a href="#section-topline-1" ><span>Login</span></a></li>
+								</ul>
+							</nav>
+							<div class="content-wrap">
+								<div id="section-topline-1">
+									<form method="post" action="/sessions/login">
+										<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+										<input type="text" name="email" placeholder="Email" class="form-control authentication-input-fields">
+										<input type="text" name="password" placeholder="Password" class="form-control authentication-input-fields">
+										<input type="submit" name="submit" value="Login" class="btn btn-lg btn-primary btn-block submit-button">
+									</form>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div><!-- /content -->
+			</div><!-- /tabs -->
+		</section>
+	</div><!-- /container -->
+	<div class="footer-wrapper">								
+	    <div class="footer">
+	      	<div class="row col-lg-4">
+		        <h2>Our Offices</h2>
+		        <p>
+		          Coding Dojo Project Team <br>
+		          175 E. Olive St. <br>
+		          Burbank, CA 91502<br>
+		          <a href="tel:13231231220">(323)123-1220</a>
+		        </p>
+	      	</div>
+		    <div class="row col-lg-4">
+		        <h2>Stay In Touch</h2>
+		        <h2>
+		          <a href="http://www.facebook.com" class="social_links"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+		          <a href="http://www.instagram.com" class="social_links"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+		          <a href="http://www.github.com" class="social_links"><i class="fa fa-github" aria-hidden="true"></i></a>
+		          <a href="http://www.snapchat.com" class="social_links"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a>
+		          <a href="http://www.linkedin.com" class="social_links"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+		        </h2>
+		    </div>
+	      	<div class="row col-lg-4">
+		        <h2>Contact Us</h2>
+		        <form action="" method="post" id="contact_form">
+			        <input type="text" placeholder="Name" name="name" class="form-control">
+			        <input type="text" placeholder="Email" name="email" class="form-control">
+			        <textarea id="contact_textarea" name="comment" id="" cols="19" rows="5" placeholder="Comment" class="form-control"></textarea>
+			        <input type="submit" id="contact_button" class="btn btn-lg btn-primary btn-block submit-button">
+		        </form>
+	      	</div>
 	    </div>
-      	<div class="row col-lg-4">
-	        <h2>Contact Us</h2>
-	        <form action="" method="post" id="contact_form">
-		        <input type="text" placeholder="Name" name="name" class="form-control">
-		        <input type="text" placeholder="Email" name="email" class="form-control">
-		        <textarea id="contact_textarea" name="comment" id="" cols="19" rows="5" placeholder="Comment" class="form-control"></textarea>
-		        <input type="submit" id="contact_button" class="btn btn-lg btn-primary btn-block submit-button">
-	        </form>
-      	</div>
-      	<div class="clr"></div>
-    </div>
- </div>
+	 </div>

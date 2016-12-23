@@ -12,7 +12,7 @@ end
 
 	def test
 		@products = Product.all
-	end
+  end
 
 
 def logout
@@ -28,7 +28,7 @@ def logout
 end
 
 def profile
-
+  # if session user not nil find user...same for rep / admin
 end
 
 
