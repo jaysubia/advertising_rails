@@ -27,7 +27,7 @@
 			</div>
 
 			<div class="col-md-9">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.6027893817436!2d-80.07540349094661!3d26.31744870560967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa67297eeb14cb06b!2sVolleyball+Courts!5e1!3m2!1sen!2sus!4v1482379447958" width="100%" height="350" frameborder="0" style="border:0;border-radius: 5px;" allowfullscreen ></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.6027893817436!2d-80.07540349094661!3d26.31744870560967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa67297eeb14cb06b!2sVolleyball+Courts!5e1!3m2!1sen!2sus!4v1482379447958" width="100%" height="450" frameborder="0" style="border:0;border-radius: 5px;" allowfullscreen ></iframe>
 			</div>
 		</div>
     	</div> 
@@ -59,7 +59,7 @@
 <div class="jumbotron">
 	<div class="container">
 		<h2 class="salutation">Howdy, <%=@rep.first_name%>!</h2>
-		<div class="mytable">
+		<div class="mytable reps">
 			<a href="/users/new" class="btn btn-default add">Add New Client</a>	
 			<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
 				<tr>
@@ -71,26 +71,30 @@
 				</tr>
 
 				<!-- Follow this sample row below for displaying each Reps' clients -->
-				<tr><td colspan="6" height="10"></td></tr> 
-				<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> <!-- Make sure this empty row is included -->
+				<tr><td colspan="5" height="10"></td></tr> 
+				<tr style="border-top:1px solid rgba(41,178,123, 0.2);">
+					<td colspan="5" height="11"></td>
+				</tr> <!-- Make sure this empty row is included -->
 				<%if @rep.users%>
 				  <%@rep.users.each do |user|%>
-					<tr>
-						<td width="170" valign="middle" class="td-division">
-							<a href="#" data-toggle="modal" data-target=".modal"><%=user.first_name%> <%=user.last_name%></a>
-						</td>
-	                	<td width="180" valign="middle" class="td-division"><a href="mailto:"><%=user.email%></a></td>
-	                	<td width="220" valign="middle" class="td-division">Pending</td>
-	                	<td width="180" valign="middle" class="td-division"><%=user.created_at.strftime("%b. %d %Y")%></td>
-	    				<td align="center" valign="middle" class="td-division date-time">
-	    					<ul>
-								<li><a href="/users/<%=user.id%>/edit">Edit</a></li>
-								<li><a class="md-trigger" data-modal="modal-2" href="#">Remove</a></li>
-							</ul>
-	    				</td>
-						<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> 
-  					</tr>
-
+				<tr>
+					<td width="230" valign="middle" class="td-division">
+						<a href="#" data-toggle="modal" data-target=".modal"><%=user.first_name%> <%=user.last_name%></a>
+					</td>
+                	<td width="230" valign="middle" class="td-division"><a href="mailto:"><%=user.email%></a></td>
+                	<td width="190" valign="middle" class="td-division">Pending</td>
+                	<td width="180" valign="middle" class="td-division"><%=user.created_at.strftime("%b. %d %Y")%></td>
+    				<td align="center" valign="middle" class="td-division date-time">
+    					<ul>
+							<li><a href="/users/<%=user.id%>/edit">Edit</a></li>
+							<li><a class="md-trigger" data-modal="modal-2" href="#">Remove</a></li>
+						</ul>
+    				</td>
+					</tr>
+				
+				<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);">
+					<td colspan="5" height="11"></td>
+				</tr> 
 				  <%end%>
 				<%end%>
 			</table>	
