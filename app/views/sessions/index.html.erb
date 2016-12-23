@@ -92,28 +92,25 @@
 					    </script>
 					</section>
 					<section id="section-linemove-2">
-						<h2>Lorem</h2>
-						<p id="about_us_text">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, laudantium necessitatibus quos cumque est mollitia dolore ducimus recusandae! Quos, dolores velit animi. Nisi a id maxime, voluptates eius. Perferendis, qui.
-						</p>
-						<p id="about_us_text">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates similique corrupti, vel sapiente. Natus incidunt modi deleniti tenetur id distinctio labore dolorum delectus voluptatem. Eaque nostrum eos expedita, ratione explicabo.
-						</p>
-						<a href="#" class="btn btn-default learn-more">Learn More</a>
+						<div class="jumbotron-narrower">
+							<p class="about_us_text">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, laudantium necessitatibus quos cumque est mollitia dolore ducimus recusandae! Quos, dolores velit animi. Nisi a id maxime, voluptates eius. Perferendis, qui.
+							</p>
+							<p class="about_us_text">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates similique corrupti, vel sapiente. Natus incidunt modi deleniti tenetur id distinctio labore dolorum delectus voluptatem. Eaque nostrum eos expedita, ratione explicabo.
+							</p>
+							<a href="#" class="btn btn-default learn-more">Learn More</a>
+						</div>
 					</section>
 					<section id="section-linemove-4" class="authentication-section">
 						<div class="tabs tabs-style-topline authentication-box">
-							<nav>
-								<ul>
-									<li><a href="#section-topline-1" ><span>Login</span></a></li>
-								</ul>
-							</nav>
+							<span class="login-tab-title">Login</span>
 							<div class="content-wrap">
 								<div id="section-topline-1">
 									<form method="post" action="/sessions/login">
 										<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 										<input type="text" name="email" placeholder="Email" class="form-control authentication-input-fields">
-										<input type="text" name="password" placeholder="Password" class="form-control authentication-input-fields">
+										<input type="password" name="password" placeholder="Password" class="form-control authentication-input-fields">
 										<input type="submit" name="submit" value="Login" class="btn btn-lg btn-primary btn-block submit-button">
 									</form>
 								</div>

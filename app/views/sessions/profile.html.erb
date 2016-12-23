@@ -19,14 +19,11 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h3 class="alt">Edit Your Profile</h3>
+		<h3 class="salutation">Edit Your Profile</h3>
 <%if flash[:errors]%>
   <%flash[:errors].each do |error|%>
 	<p><%=error%></p>
   <%end%>
-<%end%>
-<% if flash[:message]%>
-  <p><%=flash[:message]%></p>
 <%end%>
 		<!-- user -->
 <%if @user != nil%>
@@ -76,7 +73,7 @@
 						<label for="">Phone Number: <input name="rep[phone]" class="form-control" value="<%=@rep.phone%>"></label>
 
 						<div class='clr'></div>
-				  		<input type="submit" class="btn btn-default submit-button wide-button" value=""ave" >
+				  		<input type="submit" class="btn btn-default submit-button wide-button" value="Save" >
 				  		<div class='clr'></div>
 					</fieldset>
 				</form>

@@ -20,43 +20,60 @@
   <%flash[:errors].each do |error|%>
     <p><%=error%></p>
   <%end%>
-<%end%>
-<div class="container">
-  <h1>Edit <%=@rep.first_name%></h1>
-  <%= form_for @rep, html:{ multipart: true} do |f|%>
-    <% if @rep.errors.any? %>
-      <div id="error_explanation">
-        <h2><%=pluralize(@rep.errors.count, "error") %> prohibited this rep from being saved:</h2>
-        <ul>
-          <% @rep.errors.full_messages.each do |message| %>
-            <li><%=message%></li>
-        <%end%>
-        </ul>
-      </div>
-    <%end%>
-    <div class="field">
-      <%= f.label :first_name%> <br>
-      <%= f.text_field :first_name%> 
-    </div>
-    <div class="field">
-      <%= f.label :last_name%> <br>
-      <%= f.text_field :last_name%> 
-    </div>
-    <div class="field">
-      <%= f.label :email%> <br>
-      <%= f.text_field :email%>
-    </div>
-    <div class="field">
-      <%= f.label :phone%> <br>
-      <%= f.text_field :phone%>
-    </div>
-    <div class="field">
-      <%= f.label :add_image%> <br>
-      <%= f.file_field :image%> 
-    </div>
-    <img src="<%=@rep.image%>" alt="<%=@rep.first_name%>_image" width="100px" height="100px">
-    <div class="actions">
-    <%= f.submit%>
-    </div>
-  <%end%>
-</div>
+          <%end%>
+
+          <div class="jumbotron">
+
+          <div class="container">
+            <h3 class="salutation">Edit <%=@rep.first_name%></h3>
+          <div class="user-login-wrapper">
+              <div id="info-wrapper">
+            <%= form_for @rep, html:{ multipart: true} do |f|%>
+              <% if @rep.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%=pluralize(@rep.errors.count, "error") %> prohibited this rep from being saved:</h2>
+                  <ul>
+                    <% @rep.errors.full_messages.each do |message| %>
+                      <li><%=message%></li>
+                  <%end%>
+                  </ul>
+                </div>
+              <%end%>
+
+              <legend>Edit Information</legend>
+              <div class="field">
+                <%= f.label :email%> <br>
+                <%= f.text_field :email, :class => ' form-control'%>
+              </div>
+              <div class="field">
+                <%= f.label :first_name%> <br>
+                <%= f.text_field :first_name, :class => ' form-control'%> 
+              </div>
+              <div class="field">
+                <%= f.label :last_name%> <br>
+                <%= f.text_field :last_name, :class => ' form-control'%> 
+              </div>
+              <div class="field">
+                <%= f.label :phone%> <br>
+                <%= f.text_field :phone, :class => ' form-control'%>
+              </div>
+              </div>
+
+              <div id="pwd-wrapper">
+                <legend>Edit image</legend>
+                  <img src="<%=@rep.image%>" alt="<%=@rep.first_name%>_image" width="100px" height="100px">
+                  <div class="field">
+                    <%= f.label :add_image%> <br>
+                    <%= f.file_field :image%> 
+                  </div>
+              
+                  <div class="actions">
+                    <%= f.submit :class => 'btn btn-default submit-button wide-button'%>
+                  </div>
+            <%end%>
+            </div>
+          </dic>
+          </div>
+          </div>
+
+

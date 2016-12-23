@@ -1,41 +1,3 @@
-<!-- Large modal -->
-<div class="modal fade" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content"> 
-    	<div class="modal-header"> 
-    		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    			<span aria-hidden="true">×</span>
-    		</button> 
-    		<h5 class="modal-title" id="myLargeModalLabel">Jay Subia - Jay Enterprises </h5> 
-    	</div> 
-    	<div class="modal-body"> 
-    	<div class="row">
-			<div class="mytable col-md-3">
-	    		<table cellspaceing="0" cellpadding="0" width="95%" border="0" align="center">
-					<tr>
-						<th>Bench Number</th>
-					</tr>
-
-					<!-- Follow this sample row below for displaying each Reps' clients -->
-					<tr><td colspan="6" height="10"></td></tr> 
-					<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> <!-- Make sure this empty row is included -->
-					<tr>
-						<td width="170" valign="middle" class="td-division"><a href="#link-to-pin-on-map">LA-9847562</a></td>
-  					</tr>
-					<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> 
-				</table>
-			</div>
-
-			<div class="col-md-9">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.6027893817436!2d-80.07540349094661!3d26.31744870560967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa67297eeb14cb06b!2sVolleyball+Courts!5e1!3m2!1sen!2sus!4v1482379447958" width="100%" height="350" frameborder="0" style="border:0;border-radius: 5px;" allowfullscreen ></iframe>
-			</div>
-		</div>
-    	</div> 
-    </div>
-  </div>
-</div>
-
-
 <div id="nav-container">
 		<nav>
 			<h1>Dashboard App</h1>
@@ -58,38 +20,38 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h1 class="salutation">Howdy, <a href="/users/<%=@user.id%>"><%=@user.first_name%></a>!</h1>
-		<h3>Your Products</h3>
+		<h1 class="salutation">Howdy, <%=@user.first_name%>!</h1>
+		<h3 class="inventory-heading">Your Inventory:</h3>
 		<div class="mytable">
 			<div class="row">
-				<div class="mytable col-md-6">
-					<table cellspaceing="0" cellpadding="0" width="95%" border="0" align="center">
+				<div class="mytable col-md-4">
+					<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
 						<tr>
 						    <th>Bench Number</th>
 						    <th>Street Address</th>
 						</tr>
 
 						<tr>
-							<td colspan="6" height="10"></td>
+							<td colspan="2" height="10"></td>
 						</tr> 
 						<tr style="border-top:1px solid rgba(41,178,123, 0.2);">
-							<td colspan="6" height="11"></td>
+							<td colspan="2" height="11"></td>
 						</tr> <!-- Make sure this empty row is included -->
 						<%if @user.products_purchased %>
 						  <%@user.products_purchased.each do |product|%>
 							<tr>
-							    <td width="170" valign="middle" class="td-division"><a href="#link-to-pin-on-map"><%=product.bench_number%></a></td>
-							    <td width="170" valign="middle" class="td-division"><a href="#link-to-pin-on-map"><%=product.primary_street%></a></td>
+							    <td width="80" valign="middle" class="td-division"><a href="#link-to-pin-on-map"><%=product.bench_number%></a></td>
+							    <td width="200" valign="middle" class="td-division"><%=product.primary_street%> <%=product.secondary_street%>. <%=product.city%></td>
 							 </tr>
 							<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);">
-								<td colspan="6" height="11"></td>
+								<td colspan="2" height="11"></td>
 							</tr> 
 						  <%end%>
 						<%end%>
 					</table>
 				</div>
-				<div class="col-md-6">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.6027893817436!2d-80.07540349094661!3d26.31744870560967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa67297eeb14cb06b!2sVolleyball+Courts!5e1!3m2!1sen!2sus!4v1482379447958" width="100%" height="350" frameborder="0" style="border:0;border-radius: 5px;" allowfullscreen ></iframe>
+				<div class="col-md-8">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.6027893817436!2d-80.07540349094661!3d26.31744870560967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa67297eeb14cb06b!2sVolleyball+Courts!5e1!3m2!1sen!2sus!4v1482379447958" width="100%" height="550" frameborder="0" style="border:0;border-radius: 5px;" allowfullscreen ></iframe>
 				</div>
 			</div>
 		</div>

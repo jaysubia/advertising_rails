@@ -63,7 +63,15 @@
 
 .salutation {
 	font-weight: normal;
-	font-size: 24px;
+	font-size: 22px;
+}
+
+.inventory-heading {
+
+	font-size: 1.2em;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .jumbotron {
@@ -107,7 +115,7 @@ table th {
 }
 
 .reps {
-	width: 80%;
+	width: 85%;
 	min-width: 492px;
     margin: 0 auto;
 }
@@ -152,7 +160,7 @@ table td a {
 .user-login-wrapper legend {
     margin-bottom: 20px ;
     font-size: 19px ;
-	color: #555 ;
+	color: #74777b !important;
 	border-bottom: 1px solid #e5e5e5;
 }
 
@@ -251,12 +259,81 @@ table td a {
 	float: left;
 }
 
+#add_new_user>input{
+	display: block;
+	margin-bottom: 10px;
+}
+#image{
+	border-radius: 100%;
+}
+.image_holder, .greeting{
+	display: inline-block;
+}
+.image_holder {
+	width: 150px !important;
+	float: right;
+	/*margin-right: 150px;*/
+	margin-bottom: 50px;
+}
+
+.rep-info {
+	width: 230px;
+	float: right;
+	font-size: 15px;
+}
+
+.rep-info p {
+	padding: 0.4em;
+}
+
+.image_holder .field {
+    margin: 5px auto;
+	width: 130px;
+}
+.image_holder .field input.choosefile {
+    font-size: 14px !important;
+    width: 111px !important;
+    margin: 3px auto !important;
+    padding-left: 18px;
+}
 
 
+.image_holder .field input.submit-button {
+
+    width: 130px !important;
+    /*padding-left: 0px !important; */
+}
+
+.rep-header {
+	width: 382px;
+	margin:0 auto;
+}
 
 
+.jumbotron-narrower {
+	width: 70%;
+	min-width: 400px;
+	margin: 65px auto;
+}
+.about_us_text{
+	font-size: 0.8em !important;
+    color: #888 !important;
+	font-weight: normal !important;
+}
+.learn-more{
+	margin-bottom: 15px;
+}
 
 
+.login-tab-title {
+	color: #2CC185 !important;
+	box-shadow: inset 0 3px 0 #2CC185;
+	padding: 2.2em 0 1.3em 0 !important;
+	font-size: .52em !important;
+	display: block;
+	text-transform: uppercase;
+
+}
 
 
 

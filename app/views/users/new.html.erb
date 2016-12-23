@@ -16,16 +16,24 @@
 		</ul>
 	</nav>
 </div>
-<div class="container">
-	<h1>Add A New User</h1>
-	<div class="row">
-		<form action="/users/create" method="POST" id="add_new_user">
-			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-			<input type="text" name="first_name" placeholder="Enter First Name">
-			<input type="text" name="last_name" placeholder="Enter Last Name">
-			<input type="text" name="email" placeholder="Enter Email">
-			<input type="text" name="password" placeholder="Enter Password">
-			<input type="submit">
-		</form>
+
+
+<div class="user-login-wrapper">
+		<div id="info-wrapper">
+			<h3 class="salutation">Add a new client</h3>
+			<form class="form-group" action="" method="post">
+				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+				<fieldset>
+					<label for="">Email: <input name="email" type="text" class="form-control"></label>
+					<label for="">First Name: <input name="first_name" type="text" class="form-control"></label>
+					<label for="">Last Name: <input name="last_name" type="text" class="form-control"></label>
+					<label for="">Password: <input name="password" type="password" class="form-control" placeholder="Password should be at least 8 characters"></label>
+					<label for="">Confirm Password: <input name="confirm_pass" type="password" class="form-control"></label>
+					<div class='clr'></div>
+			  		<input type="submit" class="btn btn-default submit-button wide-button" value="Create">
+			  		<div class='clr'></div>
+				</fieldset>
+			</form>
+		</div>
 	</div>
-</div>

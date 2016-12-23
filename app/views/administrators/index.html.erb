@@ -17,24 +17,24 @@
 	<div class="container">
 		<h2 class="salutation">Howdy, <%= @admin.first_name %>!</h2>
 		<div class="mytable admins">
-		<a href="/administrators/new" class="btn btn-default add">Add New Rep/Admin</a>	
+		<a href="/administrators/new" class="btn btn-default add">Add New Rep</a>	
 		<div class="clr"></div>
 				<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
 					<tr>
-						<th>Profile Picture</th>
-						<th>Rep Name</th>
+						<!-- <th></th> -->
+						<th colspan="2">Rep Name</th>
 						<th>Contact Info</th>
 						<th>Actions</th>
 					</tr>
 
 				<% @reps.each do |rep|%>
 					<!-- Follow this sample row below for displaying each Reps' clients -->
-					<tr><td colspan="6" height="10"></td></tr> 
-					<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> <!-- Make sure this empty row is included -->
+					<tr><td colspan="4" height="10"></td></tr> 
+					<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="4" height="11"></td></tr> <!-- Make sure this empty row is included -->
 					<tr>
-	                	<td width="180" valign="middle" class="td-division"><img src="<%=rep.image%>" alt="<%=rep.first_name%>'s_image" height="35px" width="35px" id="image"></td>
-						<td width="230" valign="middle" class="td-division"><a href="/reps/<%= rep.id %>/show"><%= rep.first_name %></a></td>
-	                	<td width="230" valign="middle" class="td-division"><a href="tel:<%=rep.phone%>"><%= rep.phone %></a> <br/> <a href="mailto:<%= rep.email %>"><%= rep.email %></a></td>
+	                	<td width="40" valign="middle"><img src="<%=rep.image%>" alt="<%=rep.first_name%>'s_image" height="35px" width="35px" id="image"></td>
+						<td width="245" valign="middle" class="td-division"><a href="/reps/<%= rep.id %>/show"><%= rep.first_name %></a></td>
+	                	<td width="280" valign="middle" class="td-division"><a href="tel:<%=rep.phone%>"><%= rep.phone %></a> <a href="mailto:<%= rep.email %>"><%= rep.email %></a></td>
 	    				<td align="center" valign="middle" class="td-division date-time">
 	    					<ul>
 								<li><a href="/reps/<%=rep.id%>/edit">Edit</a></li>
@@ -42,7 +42,7 @@
 							</ul>
 	    				</td>
   					</tr>
-					<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> 
+					<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="4" height="11"></td></tr> 
 
 				<% end %>
 				</table>	

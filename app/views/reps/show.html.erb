@@ -1,3 +1,41 @@
+<!-- Large modal -->
+<div class="modal fade" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content"> 
+    	<div class="modal-header"> 
+    		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    			<span aria-hidden="true">×</span>
+    		</button> 
+    		<h5 class="modal-title" id="myLargeModalLabel">Jay Subia - Jay Enterprises </h5> 
+    	</div> 
+    	<div class="modal-body"> 
+    	<div class="row">
+			<div class="mytable col-md-3">
+	    		<table cellspaceing="0" cellpadding="0" width="95%" border="0" align="center">
+					<tr>
+						<th>Bench Number</th>
+					</tr>
+
+					<!-- Follow this sample row below for displaying each Reps' clients -->
+					<tr><td colspan="6" height="10"></td></tr> 
+					<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> <!-- Make sure this empty row is included -->
+					<tr>
+						<td width="170" valign="middle" class="td-division"><a href="#link-to-pin-on-map">LA-9847562</a></td>
+  					</tr>
+					<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="6" height="11"></td></tr> 
+				</table>
+			</div>
+
+			<div class="col-md-9">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.6027893817436!2d-80.07540349094661!3d26.31744870560967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa67297eeb14cb06b!2sVolleyball+Courts!5e1!3m2!1sen!2sus!4v1482379447958" width="100%" height="450" frameborder="0" style="border:0;border-radius: 5px;" allowfullscreen ></iframe>
+			</div>
+		</div>
+    	</div> 
+    </div>
+  </div>
+</div>
+
+
 <div id="nav-container">
 	<nav>
 		<h1>Dashboard App</h1>
@@ -21,38 +59,58 @@
 <p><%=error%></p>
 <%end%>
 <%end%>
-<div class="container">
-	<h1 class="greeting col-md-6">Hello <%=@rep.first_name%>!</h1>
-	<div class="image_holder col-md-6">
-		<img src="<%=@rep.image%>" alt="<%=@rep.first_name%>_<%=@rep.image%>" height='150px' width='150px' id="image">
-		<%= form_for @rep, html:{ multipart: true} do |f|%>
-		<div class="field">
-		  <%= f.file_field :image%> 
+<div class="jumbotron">
+	<div class="container">
+		<div class="rep-header">
+			<div class="rep-info">
+				<p><strong>Rep Name:</strong> <%=@rep.first_name%> <%=@rep.last_name%></p>
+				<p><strong>Email:</strong> <%=@rep.email%></p>
+			</div>
+
+			<div class="image_holder">
+				<img src="<%=@rep.image%>" alt="<%=@rep.first_name%>_<%=@rep.image%>" height='150' width='150' id="image">
+				<%= form_for @rep, html:{ multipart: true} do |f|%>
+				
+				<div class="field">
+				  	<%= f.file_field :image, :class => ' choosefile'%> 
+					<input type="hidden" value="<%=@rep.id%>" name="id">
+					<%= f.submit :class => 'btn btn-default submit-button wide-button' %>
+				</div>
+
+				<%end%>
+			</div>
+			<div class="clr"></div>
 		</div>
-		<input type="hidden" value="<%=@rep.id%>" name="id">
-		<%= f.submit%>
-		<%end%>
-	</div>
-	<div class="row">
-		<p><strong>Name:</strong> <%=@rep.first_name%> <%=@rep.last_name%></p>
-		<p><strong>Email:</strong> <%=@rep.email%></p>
-	</div>
-	<div class="row">
-		<table class="table table-striped">
-		<thead>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Client Since</th>
-		</thead>	
-		<%if @rep.users%>
-		  <%@rep.users.each do |user|%>
-		  <tr>
-		  	<td><%=user.first_name%></td>
-		  	<td><%=user.email%></td>
-		  	<td><%=user.created_at%></td>
-		  </tr>
-		  <%end%>
-		<%end%>
-		</table>
+		<div class="mytable admins">
+			<table cellspaceing="0" cellpadding="0" width="100%" border="0" align="center">
+				<tr>
+					<th>Client Name</th>
+					<th>Contact Info</th>
+					<th>Client Since</th>
+					<th>Contract Expiration Date</th>
+				</tr>
+
+				<%if @rep.users%>
+			  	<%@rep.users.each do |user|%>
+
+				<tr><td colspan="4" height="10"></td></tr> 
+
+				<tr style="border-top:1px solid rgba(41,178,123, 0.2);"><td colspan="4" height="11"></td></tr> <!-- Make sure this empty row is included -->
+
+				<tr>
+				  	<td width="245" valign="middle" class="td-division"><a href="#" data-toggle="modal" data-target=".modal"><%=user.first_name%> <%=user.last_name%></a></td>
+				  	<td width="250" valign="middle" class="td-division"><a href="mailto:<%=user.email%>"> <%=user.email%></a></td>
+				  	<td width="200" valign="middle" class="td-division"><%=user.created_at.strftime("%b. %d %Y")%> </td>
+				  	<td valign="middle" class="td-division"><%=user.created_at.strftime("%b. %d %Y")%> </td>
+
+			  	</tr>
+
+				<tr style="border-bottom:1px solid rgba(41,178,123, 0.2);"><td colspan="4" height="11"></td></tr> 
+
+			  <%end%>
+			<%end%>
+			</table>
+		</div>
+		
 	</div>
 </div>
