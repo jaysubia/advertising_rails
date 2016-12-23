@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 	has_secure_password
+	belongs_to :rep
+	has_many :purchases
+	has_many :products_purchased, through: :purchases, source: :product
 
 	EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
 

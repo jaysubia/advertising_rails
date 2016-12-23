@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   get 'users/index'
 
   post '/users' => 'users#create'
-
-
+  get '/users/new' => 'users#new'
+  get '/users/:id' => 'users#show'
+  get '/users' => 'users#index'
 
   get '/reps' => 'reps#index'
   post '/reps/:id' => 'reps#add_photo'

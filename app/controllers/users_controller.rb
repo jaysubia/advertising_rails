@@ -1,17 +1,20 @@
 class UsersController < ApplicationController
   def index
-  	@user = User.new
+  	@user = User.find(session[:user_id])
   end
   def create
-  @user = User.create( user_params )
-end
+    @user = User.create( user_params )
+  end
+  def new
+  	@rep = Rep.find(session[:rep_id])
+  end
 
-private
+  def show
 
-# Use strong_parameters for attribute whitelisting
-# Be sure to update your create() and update() controller methods.
+  end
 
-def user_params
-  params.require(:user).permit(:avatar)
-end
+  private
+  def user_params
+    params.require(:user).permit(:avatar)
+  end
 end
