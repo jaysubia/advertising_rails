@@ -30,11 +30,7 @@ class ProductsController < ApplicationController
   end
  
   def index 
-    @products = Product.all
-    @hash = Gmaps4rails.build_markers(@products) do |product, marker|
-      marker.lat product.latitude
-      marker.lng product.longitude
-      marker.infowindow product.bench_number
+   
     end
 
       

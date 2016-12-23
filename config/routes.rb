@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get '/administrators/index' => 'administrators#index'
   post '/administrators/index' => 'reps#add_photo'
 
+  get 'test' => 'sessions#test'
+
   resources :products
   resources :reps
 
